@@ -1,0 +1,20 @@
+CREATE TABLE parts (
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(50) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    type VARCHAR(50),
+    price DOUBLE PRECISION,
+    stock INTEGER
+);
+CREATE TABLE customers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20),
+    email VARCHAR(100)
+);
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    customer_id BIGINT REFERENCES customers(id),
+    total_price DOUBLE PRECISION,
+    order_date TIMESTAMP
+);
